@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block start %}
+
+
+    <h1>This template is returned by the Django server</h1>
+
+    <a href="/about/">
+      about
+    </a>
+    |
+     <a href="/contect/">
+      contect
+    </a>
+
+    <table class="container">
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Can Vote</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for people in peoples %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ people.name }}</td>
+                <td>{{ people.age }}</td>
+                <td>
+                    {% if people.age >= 18 %}
+                        👍
+                    {% else %}
+                        👎
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock  %}
+
